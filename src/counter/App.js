@@ -14,17 +14,17 @@ export default class AppCounter extends React.Component {
         this.state = {
             count: 0
         }
-        this.changeCount = this.changeCount.bind(this);
+        //this.changeCount = this.changeCount.bind(this);
     }
 
-    changeCount(val, type) {
+    changeCount = (val, type) => {
         // cap nhat thay doi state
         // click + thi tang gia tri count val don vi
         // click - thi giam gia tri count val don vi
         // can biet gia tri hien tai ???
         if(type === 0){
             //this.setState({count: this.state.count - val});
-            this.setState(state => ({ count: state.count - val }) );
+            this.setState((state, props) => ({ count: state.count - val }) );
         } else if(type === 1){
             this.setState({count: this.state.count + val});
         }
