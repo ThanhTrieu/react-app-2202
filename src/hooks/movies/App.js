@@ -17,22 +17,24 @@ const AppMovie = () => {
         // cap nhat state loading
         setLoading(true); // bat dau tim kiem
         if(keyword !== ''){
-            // cap nhat state keyword (sau nay con phan trang)
-            if(keyword !== name){
-                // co thay doi tu khoa tim kiem
-                setName(keyword);
-            }
             // call api 
             const data = await api.searchDataMovieByKeyword(keyword, p);
             if(data.hasOwnProperty('results')){
                 // cap nhat state data movies
                 setDataMovies(data.results);
             }
-            if(data.hasOwnProperty('total_pages')){
-                setTotalPage(data.total_pages);
-            }
-            if(data.hasOwnProperty('total_results')){
-                setTotalItems(data.total_results);
+            // cap nhat state keyword (sau nay con phan trang)
+            if(keyword !== name){
+                // co thay doi tu khoa tim kiem
+                setName(keyword);
+                // cap nhat total page
+                if(data.hasOwnProperty('total_pages')){
+                    setTotalPage(data.total_pages);
+                }
+                // cap nhat total result
+                if(data.hasOwnProperty('total_results')){
+                    setTotalItems(data.total_results);
+                }
             }
         }
         // ngung tim kiem
