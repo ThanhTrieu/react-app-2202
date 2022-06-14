@@ -1,8 +1,10 @@
 import React from 'react';
-import HeaderComponent from './partials/Header';
-import FooterComponent from './partials/Footer';
-import ContentComponent from './partials/Content';
+import loadable from '@loadable/component'
 import { Layout } from 'antd';
+
+const HeaderComponent  = loadable(() => import('./partials/Header'));
+const FooterComponent  = loadable(() => import('./partials/Footer'));
+const ContentComponent = loadable(() => import('./partials/Content'));
 
 const LayoutComponent = (props) => {
     return (
