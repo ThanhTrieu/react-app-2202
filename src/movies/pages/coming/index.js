@@ -21,7 +21,7 @@ const UpComingMovies = () => {
             setLoading(false);
         }
         getData();
-    }, []);
+    }, [page]);
 
     if(loading){
         return (
