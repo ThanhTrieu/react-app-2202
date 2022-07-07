@@ -18,9 +18,11 @@ const weatherSlice = createSlice({
         },
         searchDataWeatherSucceed(state, action){
             state.dataWeathers = action.payload;
+            state.error = null;
         },
         searchDataWeatherFailed(state, action){
             state.error = action.payload;
+            state.dataWeathers = {};
         }
     }
 });
