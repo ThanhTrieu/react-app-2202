@@ -1,16 +1,19 @@
 import React from 'react';
+import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import RouteApp from './routes/web';
 import configStore from './redux/configureStore';
 
 import './app.css';
 
-const { store } = configStore();
+const { store, persistor } = configStore();
 
 const ShoppingCartApp = () => {
     return (
         <Provider store={store}>
-            <RouteApp/>
+            <PersistGate loading={null} persistor={persistor}>
+                <RouteApp/>
+            </PersistGate>
         </Provider>
     )
 }
